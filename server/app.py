@@ -1,6 +1,6 @@
-from flask import Flask, jsonify
+from flask import Flask
 from flask_cors import CORS
-
+from router import use_router
 # configuration
 DEBUG = True
 
@@ -11,10 +11,7 @@ app.config.from_object(__name__)
 # enable CORS
 CORS(app)
 
-# sanity check route
-@app.route('/ping', methods=['GET'])
-def ping_pong():
-    return jsonify('pong!')
+use_router(app)
 
 if __name__ == '__main__':
     app.run()
